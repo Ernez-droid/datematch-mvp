@@ -615,6 +615,247 @@
             opacity: 0.95;
             line-height: 1.5;
         }
+
+        .chat-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            width: 90%;
+            max-width: 450px;
+            height: 600px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translate(-50%, 100%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-header-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chat-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .chat-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .chat-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .chat-message {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-message.sent {
+            align-items: flex-end;
+        }
+
+        .chat-message.received {
+            align-items: flex-start;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            word-wrap: break-word;
+        }
+
+        .chat-message.sent .message-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-message.received .message-bubble {
+            background: white;
+            color: #333;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: #6c757d;
+            margin-top: 4px;
+            padding: 0 5px;
+        }
+
+        .chat-input-container {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e9ecef;
+            border-radius: 0 0 20px 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 15px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .chat-input:focus {
+            border-color: #667eea;
+        }
+
+        .chat-send-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .chat-send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .match-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .match-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .send-message-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .send-message-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .keep-swiping-btn {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .keep-swiping-btn:hover {
+            background: #f8f9fa;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 18px;
+            width: fit-content;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #6c757d;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1176,10 +1417,6 @@
         function showMatchNotification(user) {
             const overlay = document.createElement('div');
             overlay.className = 'overlay';
-            overlay.onclick = () => {
-                overlay.remove();
-                notification.remove();
-            };
 
             const notification = document.createElement('div');
             notification.className = 'match-notification';
@@ -1187,15 +1424,160 @@
                 <h2>It's a Match! 🎉</h2>
                 <p>You and ${user.name} liked each other!</p>
                 <div class="match-avatar">${user.emoji}</div>
+                <div class="match-buttons">
+                    <button class="match-btn send-message-btn" onclick="openChat('${user.name}', '${user.emoji}')">
+                        💬 Send Message
+                    </button>
+                    <button class="match-btn keep-swiping-btn" onclick="closeMatchNotification()">
+                        Keep Swiping
+                    </button>
+                </div>
             `;
 
             document.body.appendChild(overlay);
             document.body.appendChild(notification);
 
+            window.currentMatchOverlay = overlay;
+            window.currentMatchNotification = notification;
+        }
+
+        function closeMatchNotification() {
+            if (window.currentMatchOverlay) {
+                window.currentMatchOverlay.remove();
+            }
+            if (window.currentMatchNotification) {
+                window.currentMatchNotification.remove();
+            }
+        }
+
+        function openChat(name, emoji) {
+            closeMatchNotification();
+
+            const overlay = document.createElement('div');
+            overlay.className = 'overlay';
+
+            const chatContainer = document.createElement('div');
+            chatContainer.className = 'chat-container';
+            chatContainer.innerHTML = `
+                <div class="chat-header">
+                    <div class="chat-header-info">
+                        <div class="chat-avatar">${emoji}</div>
+                        <div>
+                            <div class="chat-name">${name}</div>
+                            <div style="font-size: 12px; opacity: 0.9;">Active now</div>
+                        </div>
+                    </div>
+                    <button class="chat-close" onclick="closeChat()">✕</button>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="chat-message received">
+                        <div class="message-bubble">Hey! Thanks for the match! 😊</div>
+                        <div class="message-time">Just now</div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="chat-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendMessage('${name}', '${emoji}')">
+                    <button class="chat-send-btn" onclick="sendMessage('${name}', '${emoji}')">➤</button>
+                </div>
+            `;
+
+            document.body.appendChild(overlay);
+            document.body.appendChild(chatContainer);
+
+            window.currentChatOverlay = overlay;
+            window.currentChatContainer = chatContainer;
+
+            overlay.onclick = closeChat;
+            document.getElementById('chat-input').focus();
+
+            // Simulate typing after 2 seconds
+            setTimeout(() => showTyping(name, emoji), 2000);
+        }
+
+        function closeChat() {
+            if (window.currentChatOverlay) {
+                window.currentChatOverlay.remove();
+            }
+            if (window.currentChatContainer) {
+                window.currentChatContainer.remove();
+            }
+        }
+
+        function sendMessage(name, emoji) {
+            const input = document.getElementById('chat-input');
+            const messageText = input.value.trim();
+            
+            if (!messageText) return;
+
+            const messagesContainer = document.getElementById('chat-messages');
+            const now = new Date();
+            const timeStr = now.getHours() + ':' + String(now.getMinutes()).padStart(2, '0');
+
+            // Add user's message
+            const sentMessage = document.createElement('div');
+            sentMessage.className = 'chat-message sent';
+            sentMessage.innerHTML = `
+                <div class="message-bubble">${messageText}</div>
+                <div class="message-time">${timeStr}</div>
+            `;
+            messagesContainer.appendChild(sentMessage);
+            
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Simulate response after delay
             setTimeout(() => {
-                overlay.remove();
-                notification.remove();
-            }, 3000);
+                showTyping(name, emoji);
+                setTimeout(() => {
+                    receiveMessage(getAutoResponse(messageText), timeStr);
+                }, 2000);
+            }, 1000);
+        }
+
+        function showTyping(name, emoji) {
+            const messagesContainer = document.getElementById('chat-messages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chat-message received';
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            messagesContainer.appendChild(typingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function receiveMessage(text, time) {
+            const typingIndicator = document.getElementById('typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+
+            const messagesContainer = document.getElementById('chat-messages');
+            const receivedMessage = document.createElement('div');
+            receivedMessage.className = 'chat-message received';
+            receivedMessage.innerHTML = `
+                <div class="message-bubble">${text}</div>
+                <div class="message-time">${time}</div>
+            `;
+            messagesContainer.appendChild(receivedMessage);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function getAutoResponse(userMessage) {
+            const responses = [
+                "That sounds amazing! Tell me more 😊",
+                "Haha I love that! What else do you enjoy?",
+                "Really? That's so cool! I've always wanted to try that",
+                "You seem really interesting! Would love to chat more",
+                "Same here! We should definitely meet up sometime ☕",
+                "That's awesome! What got you into that?",
+                "I can relate to that so much! 😄"
+            ];
+            return responses[Math.floor(Math.random() * responses.length)];
         }
 
         function renderMatches() {
